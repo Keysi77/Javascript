@@ -1,0 +1,45 @@
+REST:
+//Rest parametre používaš vo funkciách, zozbierajú všetky dáta 
+čo do funkcie pošleš do poľa, s ktorým si potom môžeš robiť čo chceš
+
+function doM2(times, ... rest){
+	let sum=0;
+	rest.forEach(num => sum+= num);
+	return sum*times;
+}
+
+// rest - ostatne parametre 
+// pred rest si mozueme pridat pridavkove parametre (times)
+
+funkcia spocita cisla a vynasobi ich 
+
+// skrateny zapis
+
+function doMath( times, ...rest ) {
+    return rest.reduce( ( sum, value ) => sum + value ) * times;
+}
+
+// rest parameter moze mat hoc-aky nazov
+
+function doMath( ...stuff ) {
+    console.log( stuff )
+}
+--------------------------------------------------------------------------
+SPREAD:
+// je opak restu, rozprestie hodnoty pola do premennych
+
+const adventureZone = [
+    'Magnus',
+    'Taako',
+    'Merle'
+];
+  
+function spread( one, two, three ) {
+    // one   === 'Magnus' 
+    // two   === 'Taako'
+    // three === 'Merle'
+	console.log(one); // vypise Magmus, lebo sa priradil k prvej premennej
+	// a tak dalej aj ostatne
+}
+  
+spread( ...adventureZone );

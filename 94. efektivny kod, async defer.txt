@@ -1,0 +1,40 @@
+94 Efektívny kód, async/defer
+
+
+<script> tagy sú špiny, bránia prehliadaču sťahovať a parsovať HTML kód. Preto používaj defer alebo async atribúty, narvi ich tam.
+
+// OBA SA STAHUJU SUBEZNE S HTML KODOM (co je dobre)
+  
+// defer skripty pockaju, kym sa cele HTML sparsuje
+// a vzdy sa spustia v poradi ako ich mas na stranke
+  
+<script defer src="app.js"></script>
+  
+// async skripty sa spustia okamzite jak sa stiahnu
+// nevies zarucit ktory sa spusti kedy
+  
+<script async src="app.js"></script>
+
+
+viac viac viac
+:: http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html
+:: https://bitsofco.de/async-vs-defer
+:: https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preloa...
+:: https://calendar.perfplanet.com/2016/prefer-defer-over-async
+
+
+
+Tá funkcia, keby túžiš zničiť svoj prehliadač:
+
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+            break;
+        }
+    }
+}
+  
+// chill out
+sleep(5000);
+---------------------------

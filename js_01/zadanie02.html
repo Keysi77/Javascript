@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Click me, lick me</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<article id="article">
+		<ul id="browser">
+			<!-- -->
+		</ul>
+		<ul id="user">
+			<!-- -->
+		</ul>
+	</article>
+
+
+	<script>
+
+	// podla idcka najdeme zoznam, do ktoreho chceme pridat spravu
+	// vytvorime novy, cisty, panensky li element
+	// jeho text nastavime na 'message' a nalepime do zoznamu
+	function addMessage( elementId, message ) {
+		var list = document.getElementById(elementId),
+			newItem = document.createElement('li');
+
+		newItem.textContent = message;
+
+		list.appendChild(newItem);
+	}
+
+	// ----------------------
+
+	// kedze moj javascript je na spodku stranky, vsetky html elementy uz prehliadac nacital
+	// beriem to tak, ze stranka je loadnuta
+	addMessage('browser', 'page loaded, bitch');
+
+	// po kliknuti na body pridame spravu do zoznamu
+	document.body.addEventListener('click', function(event) {
+		addMessage('user', 'totally clicked it');
+	});
+
+
+	// ked drzim a - hybe sa stranka dolava
+	// ked drzim b - hybe sa stranka doprava
+	document.body.addEventListener('keypress', function(event) {
+
+		// vytiahnem si aktualnu hodnotu body { left: ?px }
+		var oldLeft = getComputedStyle(document.body).left,
+			newLeft;
+
+		// zrejme to bude nieco ako "10px"
+		// z toho potrebujem vytiahnut iba cisla na zaciatku, cize 10
+		oldLeft = parseInt(oldLeft, 10);
+
+		// ak stlacim a, left znizim o 10
+		// ak stlacim d, left zvysim o 10
+		// pre starsie prehliadace si pozri https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
+		if ( event.key == 'a') {
+			newLeft = oldLeft - 10;
+		}
+		else if ( event.key == 'd') {
+			newLeft = oldLeft + 10;
+		}
+
+		// do newLeft som vypocital aku novu left hodnotu by body element mal mat
+		// teraz mu ju este musim dat
+		document.body.style.left = newLeft + 'px';
+
+	});
+
+
+ 	// pred zatvorenim okna sa zobrazi "naozaj to chces?" dialog
+	window.addEventListener('beforeunload', function (event) {
+		addMessage('browser', "don't try to close me! dick!");
+		event.returnValue = ':(';
+		return ':(';
+	});
+
+
+
+	// Zadanie 02/a)
+	console.log('Ahoj truľo.');
+
+
+	// Zadanie 02/b)
+	//
+	// funckia, ktoru musime zavolat
+	function pozdrav() {
+		console.log( 'Ahoj truľo.' );
+	}
+
+	pozdrav();
+
+	// funkcia, ktora sa zavola sama
+	(function samoPozdrav() {
+		console.log( 'Ahoj truľo.' );
+	})();
+
+	// funkcia, do ktorej mozeme poslat parameter (meno)
+	function menovityPozdrav(meno) {
+		console.log( 'Ahoj, ' + meno + ', ty truľo.' );
+	}
+
+	menovityPozdrav('Vašo');
+
+	// funkcia pozdravu s alert() namiesto console.log()
+	function alertPozdrav(meno) {
+		alert('Ahoj, ' + meno + ', ty truľo.' );
+	}
+
+	alertPozdrav('Vašo');
+
+
+	// Zadanie 02/c)
+	//
+	var a = prompt('Zadaj prvé číslo');
+	var b = prompt('Zadaj druhé číslo');
+
+	console.log( parseInt(a) + parseInt(b) );
+
+
+	// Zadanie 02/d)
+	// nie som si istý, či som dobre pochopil yablkove zadanie, but here we go
+	function sucetCisel(num1, num2) {
+		var num1 = prompt('Vloz prve cislo'),
+			num2 = prompt('Vloz druhe cislo'),
+			vysledok = parseInt(num1) + parseInt(num2);
+
+		return vysledok;
+	}
+
+	console.log( sucetCisel() );
+
+
+	// Zadanie 02/e)
+	//
+	var pocetProduktov = 5;
+	var cenaJedneho = 300;
+
+	function howMuch(pocetProduktov, cenaJedneho) {
+		return (pocetProduktov * cenaJedneho) + '€';
+	}
+
+	var article = document.getElementById('article');
+	var newParagraph = document.createElement('p');
+
+	newParagraph.textContent = 'Kupil si ' + pocetProduktov + ' produktov za ' + howMuch(pocetProduktov, cenaJedneho) + ' dokopy.';
+
+	article.appendChild(newParagraph);
+
+	</script>
+
+</body>
+</html>

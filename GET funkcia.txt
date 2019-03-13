@@ -1,0 +1,24 @@
+Funkcia ktora ziska JSON z adresy =  data z nejakej stranky napr spotify a pod...
+
+function get(url) {
+  return new Promise(function(resolve, reject) {
+    var req = new XMLHttpRequest();
+    req.open('GET', url);
+  
+    req.onload = function() {
+      if (req.status == 200) {
+        resolve(JSON.parse(req.response)); 
+		// nech vzdy prevbehne cez JSON.parse, az sa stale nemusi robiť .then(JSON.parse)...
+      }
+      else {
+        reject(Error(req.statusText));
+      }
+    };
+  
+    req.onerror = function() {
+      reject(Error("Network Error"));
+    };
+  
+    req.send();
+  });
+}

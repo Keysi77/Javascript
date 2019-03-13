@@ -1,0 +1,62 @@
+71 ES6/14 Novinky v Array
+
+
+Polia sú základ a plakali by, keby nedostali pár vylepšení.
+A neplačú.
+
+// je Jay v poli?
+const RLM = [ 'Mike', 'Jay', 'Rich Evans' ];
+RLM.includes('Jay');
+  
+// nájdi prvého s menom dlhším ako 4
+RLM.find( name => name.length > 4 )
+  
+// nájdi jeho pozíciu v poli
+RLM.findIndex( name => name.length > 4 )
+
+// najde len prveho, ktory sa sklada z dvoch slov
+RLM.find( name => name.split(' ').length >= 2 )
+
+// najde vsetky mena, ktore maju dve slova
+RLM.filter( name => name.split(' ').length >= 2 )
+
+
+
+Array.of()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of
+
+Array.from()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+
+Array.fill()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill
+
+Array.copyWithin() // temptation
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin
+
+
+
+Ak potrebuješ či aspoň niekto alebo úplne všetci spĺňajú vlastnosť:
+
+// ma NIEKTO viac ako 4 pismena?
+RLM.some( name => name.length > 4 );
+  
+// maju VSETCI?
+RLM.every( name => name.length > 4 );
+  
+// any admins in da house?
+const users = [
+    { name: 'Marceline' },
+    { name: 'Lyra', administrator: true },
+    { name: 'Matilda' }
+];
+  
+// aspon niekto z nich ma vlastnost 'administrator'?
+users.some( user => 'administrator' in user );
+// pomocou in sa da zistit ci sa nachadza v user nejaky admin
+
+A na toto potrebuješ poznať iterátor. Naštastie nabudúce ho spoznáš:
+
+RLM.values()
+RLM.keys()
+RLM.entries()

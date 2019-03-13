@@ -1,0 +1,63 @@
+79 ES6/22 SET (ako pole, kde každá hodnota je unikát)
+
+
+V programoch pracuješ s kolekciami. Pole je základný typ kolekcie, ale už si sa stretol s inými, napr. NodeList. Ktorý je dosť na prd. Ale ES6 pridalo nové kolekcie, ktoré naň nie sú.
+
+Napríklad Set.
+Ktorý je ako pole, ale automaticky zo seba maže duplikáty. 
+// priklad ked sa zadavaju tagy na yputube, tak musia byt jedinecne a nemozu sa opakovat
+
+
+let tags = new Set([ 'petite', 'ebony', 'ebony', 'scat', 'ebony' ]);
+// petite, ebony, scat
+  
+let set = new Set();
+set.add('one');
+set.add('two');
+set.add('two');
+set.add('two');
+set.add('three');
+// one, two, three
+  
+set.size // 3
+set.delete('two') // one, three
+set.has('three') // true
+set.clear(); // prázdnota
+
+
+Každý set je iterovateľný.
+Takže máš prístup k .keys(), .values() a .entries().
+A môžeš ich prebehnúť for...of loopom:
+
+for ( let val of set ) {
+    console.log(val)
+}
+
+OBJEKTY v Sete pracuju rovnako ako ine hdonoty - moze sa poslat len raz
+
+let Objekt1 = {
+	'name' : 'Michal',
+	'priezvisko' : 'Bella',
+	'vek' : '25'
+};
+
+let Objekt2 = {
+	'name' : 'Peter',
+	'priezvisko' : 'Surovoy',
+	'vek' : '20'
+};
+
+let mena = new Set([Objekt1, Objekt2, Objekt1])
+// outpu bude len Objekt1 a Objekt2 nie tri objekty lebo Objekt1 je 2x
+0: Object
+1: Object
+
+
+set, set ako množina
+:: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+:: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Implementing_ba...
+
+
+
+hraj sa
+:: http://jsbin.com/fizixikoko/edit?html,console,output

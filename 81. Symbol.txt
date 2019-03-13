@@ -1,0 +1,65 @@
+81 ES6/24 Symbol (nový dátový typ)
+
+
+Symbol je nový dátový typ. Používa sa na vyrábanie unikátnych kľúčov pre objekty.
+Na to sú určené, takže ak ich niekto používa na niečo iné, je to beťár jeden!
+Pouzitie napriklad ked doobejktu davam email a chcem aby bol skrity pred svetom.
+Symbol vyrobí unikátnu hodnotu:
+
+one = 'hey';
+two = 'hey';
+  
+one === two // true
+
+one = Symbol('hey'); // 'hey' je len pomocny nazov, nieje to hodnota symbolu!!
+two = Symbol('hey');
+  
+one === two // false
+
+
+To 'hey' v zátvorke nie je hodnota symbolu. Je to len popis. Pre tvoje oči. Pomáha s debuggingom, ale nemá to absolútne žiaden vplyv na reálnu hodnotu symbolu. Tá teba nezaujíma, ty len vedz, že vždy keď zavoláš Symbol(), JavaScript vyrobí unikátnu hodnotu.
+
+Tú potom zátvorkami [] môžeš použiť ako kľúč v objektoch. Idea je, že ak viac knižníc pridáš do stránky a každá objekty rozšíri symbolom, nebudú sa navzájom prepisovať.
+
+let obj = {
+    name: 'vasho',
+    how: 'sexy'
+}
+// for in cyklus prebehne nie hodnoty ale kluce objektu
+
+for (let key in obj){
+	console.log(key )
+}
+var how = Symbol('my new how');
+obj[how] = 'sad :(';
+  
+var how = Symbol('my new how');
+obj[how] = 'what whaaaat';
+A takto vlastne objekt môže dostať 3 rôzne 'how' hodnoty,  ktoré sa navzájom neprepíšu. 
+
+
+
+Ak si necháš vypísať kľúče a ich hodnoty, tie vytvorené Symbolom zostanú skryté.
+Rovnako zostanú skryté aj pred JSON.stringify():
+
+// tieto vypisy nevidia symboly
+for ( let key in obj ) {
+    console.log( key, obj[key] )
+}
+  
+JSON.stringify(obj)
+
+
+Ale dá sa k nim dostať, takže nie sú kompletne anonymné:
+
+Object.getOwnPropertySymbols(legend)
+Reflect.ownKeys( legend )
+
+
+symbols
+:: https://www.sitepoint.com/preparing-ecmascript-6-symbols-uses/
+:: https://www.keithcirkel.co.uk/metaprogramming-in-es6-symbols/
+:: https://developer.mozilla.org/en-US/docs/Glossary/Symbol
+:: https://maximdenisov.gitbooks.io/you-don-t-know-js/content/es6_&_beyond/syntax.html#symbols
+:: https://javascript.info/symbol
+

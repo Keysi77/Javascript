@@ -1,0 +1,44 @@
+123 Animačné knižnice
+
+
+animate.css
+https://daneden.github.io/animate.css
+
+velocity.js (if)
+http://velocityjs.org
+https://github.com/julianshapiro/velocity
+https://codepen.io/collection/tIjGb
+
+anime.js
+http://animejs.com
+
+10 ďalších
+https://hackernoon.com/10-javascript-animation-libraries-to-follow-in-2018-50ff1d905f43
+
+https://www.youtube.com/watch?v=7Ser-djvGpg
+
+----------------------------------------------------------------
+
+24 anime.js
+
+
+anime.js
+https://animejs.com
+https://codepen.io/collection/XLebem
+https://github.com/juliangarnier/anime
+
+
+
+A ak máš npm a bundler
+
+npm init -y
+npm install animejs
+parcel index.html
+  
+[ app.js ]
+import anime from 'animejs';
+
+
+12 Principles of Animation
+:: https://www.youtube.com/watch?v=haa7n3UGyDc
+

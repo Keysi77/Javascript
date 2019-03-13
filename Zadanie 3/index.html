@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Peter Bobka - Zadanie 03</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<article>
+		<ul id="browser">
+			<!-- -->
+		</ul>
+		<ul id="user">
+			<!-- -->
+		</ul>
+	</article>
+
+
+	<script>
+
+		/**
+		 * A)  SPRAV LIETANIE HORE DOLE A DIAGONÁLNE 
+		 */ 
+		var keys = {};
+
+		function moveAnimation() {
+			
+			var oldLeft = newLeft = getComputedStyle(document.body).left,
+				oldTop  = newTop  = getComputedStyle(document.body).top,
+
+			oldLeft = parseInt( oldLeft, 10 );
+			oldTop  = parseInt( oldTop,  10 );
+
+			keys[event.keyCode] = event.type === "keydown";
+
+			// W & Arrow Up & NUM8
+			if ( keys[87] || keys[38] || keys[104]) newTop = oldTop - 10;
+			// A & Arrow Left & NUM4
+			if ( keys[65] || keys[37] || keys[100] ) newLeft = oldLeft - 10;
+			// S & Arrow Down & NUM2
+			if ( keys[83] || keys[40] || keys[98] ) newTop = oldTop + 10;
+			// D & Arrow Right & NUM6
+			if ( keys[68] || keys[39] || keys[102] ) newLeft = oldLeft + 10;
+
+			document.body.style.left = newLeft + 'px';
+			document.body.style.top  = newTop  + 'px';
+
+		}
+
+		document.body.addEventListener( "keydown", moveAnimation ); 
+		document.body.addEventListener( "keyup",   moveAnimation ); 
+
+
+
+		/**
+		 * B)  SPRAV FUNKCIU, KTORÁ DOSTANE 2 ČISLA A VYPÍŠE VAČŠIE Z NICH 
+		 */ 
+		function returnBiggerNumber( num1, num2 ) {
+			
+				 if ( num1 > num2 ) return num1;
+			else if ( num2 > num1 ) return num2;
+			else                    return "Čísla sú rovnaké !";
+
+		}
+
+		console.log( returnBiggerNumber( 2, 5 ) );
+		console.log( returnBiggerNumber( 6, 1 ) );
+		console.log( returnBiggerNumber( 1, 1 ) );
+
+
+
+		/**
+		 * C)  SPRAV FUNKCIU, KAM POŠLEŠ POLE S ČÍSLAMI A ONA VYPOČÍTA ICH SUČET
+		 */
+		function returnSum() {
+			
+			var result = 0;
+
+			for (var i = 0; i < arguments.length; i++) {
+
+				if ( typeof arguments[i] === "number" ) result += arguments[i];
+
+			}
+
+			return result;
+
+		}
+
+		console.log( returnSum( 1, 2 , "SUM", 5, null, undefined ) );
+
+
+
+		/**
+		 * D)  SPRAV FUNKCIU, KTORÁ VYPÍŠE IBA KAŽDÚ DRUHÚ HODNOTU Z POĽA
+		 */
+		 function returnEverySecondValue() {
+			
+			var result = new Array();
+
+			for (var i = 0; i < arguments.length; i = i + 2 ) {
+
+				result.push( arguments[i] );
+
+			}
+
+			return result;
+
+		}
+
+		console.log( returnEverySecondValue( 1, 2 , "SUM", 5, null, undefined ) );
+
+
+
+		/**
+		 * E)  SPRAV FUNKCIU, KTORÁ NÁJDE NAJVAČŠIE ČÍSLO V POLI
+		 */
+		function returnMaxNumber() {
+			
+			var max = 0;
+
+			for (var i = 0; i < arguments.length; i++) {
+
+				if ( typeof arguments[i] === "number" ) {
+					if ( arguments[i] > max ) {
+						max = arguments[i];
+					}
+				}
+
+			}
+
+			return max;
+
+		}
+
+		console.log( returnMaxNumber( 1, 2 , "SUM", 5, null, undefined ) );
+
+	</script>
+
+</body>
+</html>
+

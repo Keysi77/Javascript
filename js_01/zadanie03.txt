@@ -1,0 +1,48 @@
+Zadanie 03
+Tvoja nultá úloha je pozrieť si nasledovné aspoň 2 videá. Ideálne 3. Keď budeš mať nastavený editor kódu, ideš na to.
+
+
+a) Sprav lietanie hore dole a diagonálne
+Pokračuj z videa 07 Šaháme na CSSko, lietame šípkami. V materiáloch nájdeš kód, kde šípka vľavo a vpravo hýbu stránku doľava doprava.
+
+Resp. A hýbe doľava a D hýbe doprava, pretože video hry.
+Dorob aby W hýbalo hore a S hýbalo dole.
+
+Keď si frajer, skús dorobiť diagonálny pohyb.
+Čiže keď držíš W a D naraz, bude letieť vpravo hore, atď.
+
+Šikovní šikovníci už do diskusii pridali zopár rád, ako na to;)
+
+
+
+
+b) Sprav funkciu, ktora dostane 2 cisla a vypise vacsie z nich
+uz si rozbehnty
+
+
+
+c) Sprav funkciu, kam posles pole s cislami a ona vypocita ich sucet
+ide ti to
+
+
+
+d) Sprav funkciu, ktora vypise iba kazdu druhu hodnotu z pola
+davas to
+
+
+
+e) Sprav funkciu, ktora ktora najde najvacsie cislo v poli
+si dabel
+
+
+
+
+
+Toto su veci, ktore mozno poznas z inych jazykov.
+Alebo inych mojich kurzov!
+Teraz si ich vyskusaj v javascripte:)
+
+Cim viac kodu napises, tym viac adidas.
+Treba hybat tie klby programatorske v modzgu co mas.
+
+Šup!

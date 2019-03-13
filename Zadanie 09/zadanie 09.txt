@@ -1,0 +1,16 @@
+Zadanie 09
+
+
+1) Vezmi progress indicator.
+A sprav mu dve veci. 
+
+a) prerob ho na ES6 Class
+(bude mať metódy, napr. recalculate() ktorú spustíš po načítaní stránky alebo resize okna)
+
+b) použi getBoundingClientRect()
+na výpočet rozmerov a pixelov prescollovania
+
+
+
+2) Zober debounce search formulár.
+Dorob, aby sa nič nedialo, kým nenapíšeš aspoň 3 znaky.

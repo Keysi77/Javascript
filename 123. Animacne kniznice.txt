@@ -1,0 +1,18 @@
+123 Animačné knižnice
+
+
+animate.css
+https://daneden.github.io/animate.css
+
+velocity.js (if)
+http://velocityjs.org
+https://github.com/julianshapiro/velocity
+https://codepen.io/collection/tIjGb
+
+anime.js
+http://animejs.com
+
+10 ďalších
+https://hackernoon.com/10-javascript-animation-libraries-to-follow-in-2018-50ff1d905f43
+
+https://www.youtube.com/watch?v=7Ser-djvGpg

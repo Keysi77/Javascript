@@ -1,0 +1,30 @@
+98 Performance 03 / odmeraj si FPS (lebo chceš 60fps a nemáš)
+
+
+google jank stránka 
+:: https://googlechrome.github.io/devtools-samples/jank
+
+
+
+Keby chceš odstaviť ktorúkoľvek z tvojich stránok;)
+Ale nerob to! Toto je len pre našu srandu.
+Toto je len pre teba a mňa;) 
+
+
+
+function heavyCoding() {
+    var start = Date.now();
+    var stoptime = Math.floor(Math.random() * 200) + 200;
+  
+    // this a blocking operation
+    // a real ajax call, for example, would not be blocking
+    // but this serves to illustrate a point
+    // about how expensive constantly firing events is
+    while ( Date.now() - start < stoptime ) {
+        // sleep
+    }
+  
+    console.log('fired', Date.now());
+}
+
+

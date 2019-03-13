@@ -1,0 +1,12 @@
+20 Default operátor || "všetko je fajn, keï mám funkciu"
+
+// toto
+var num = get_num() || 0;
+  
+// je to iste ako toto
+var num = get_num();
+if ( ! num ) {
+    num = 0;
+}
+
+...Ak plati prva cast kodu, tak as vykona ta èast a druha sa ignoruje, ale ak neplati vykona sa to èo je za || operatorom

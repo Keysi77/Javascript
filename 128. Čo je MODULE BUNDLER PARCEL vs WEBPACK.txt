@@ -1,0 +1,24 @@
+
+parcel
+:: https://parceljs.org
+
+webpack
+:: https://webpack.js.org
+
+webpack config ukážka
+:: https://gist.github.com/danielwrobert/cac4a4a44f1430339861#file-webpack-v1-config-js
+
+build tools
+:: https://gulpjs.com
+:: https://gruntjs.com/
+
+ruby on rails
+:: https://rubyonrails.org
+
+module bundlers pluginy
+:: https://www.npmjs.com/search?q=webpack%20plugin
+:: https://www.npmjs.com/search?q=parcel%20plugin
+
+moderný javascript
+:: https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70
+:: https://medium.com/tech-tajawal/modern-frontend-developer-in-2018-4c2072fa2b9c

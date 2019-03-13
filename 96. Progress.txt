@@ -1,0 +1,24 @@
+96 Performance 01 / ako spúšťať menej kódu, Progress Indicator 01
+
+
+Táto sekcia videí je o výkone.
+Aby tvoja stránka šlapala poriadne.
+
+Naučíš sa používať Performance Tab v DevTools. Naučíš sa odpaľovať menej funkcií, len ktoré potrebuješ a keď ich potrebuješ. Cez throttle a debounce a iné. 
+
+Tento progress indikátor je zámienka, na ktorej kopu ďalších vecí ukážem, šup.
+
+
+
+progress element
+:: http://html5doctor.com/the-progress-element/
+:: https://css-tricks.com/html5-progress-element/
+:: https://codepen.io/CreativeJuiz/pen/DKsjm
+:: http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/
+
+
+
+prečítaj si, keby chceš
+:: https://markmanson.net/how-to-grow-up
+:: https://getpocket.com/a/read/1834470626 (keby máš pocket) :: https://www.huffingtonpost.com/entry/handmaids-tale-season-2-episode-8_us_5b17114ce4b0734a993880c5
+

@@ -1,0 +1,36 @@
+
+84 ES6/27 Chuťovky z budúcnosti, Exponentiation, UNICODE, viac
+
+
+exponentiation
+
+2 ** 6  // ako Math.pow(2, 6) // to je dva na siestu
+
+'one'.split('') // rozdeli na pismenka ["o", "n", "e"] do pola
+
+lepší unicode
+
+'🐎👱❤'.length // vraj 5
+  
+// avšak es6 hovorí 3, ked sa pouzije for of cyklus 
+  
+for (let wat of '🐎👱❤') {
+  console.log(wat)
+}
+  
+[...'🐎👱❤'].length // 3
+
+
+string padding, zarovna cisla pod seba tym ze prida prazdne retazce
+
+console.log( '0.00'.padStart(20) )
+console.log( '10,000.00'.padStart(20) )
+console.log( '250,000.00'.padStart(20) )
+hoď do konzole a uvidíš
+...opak je padEnd()
+
+
+
+A mdn a Secrets of the JavaScript Ninja a nezabudni na Babel a YDKJS
+:: https://maximdenisov.gitbooks.io/you-don-t-know-js/content/es6_&_beyond/es_now_&_future.html
+

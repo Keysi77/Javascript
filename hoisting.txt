@@ -1,0 +1,3 @@
+- ze mozeme mat nadeklarovanu funkciu aj nizzsie a volat ju vyssie
+
+- kompilator prebehne kod a zapameta si deklaraciu funkcie preto ju moze pouuzit uz pred samotnou deklaraciou

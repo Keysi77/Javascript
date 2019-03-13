@@ -1,0 +1,65 @@
+h1{
+  color: #bada55;
+  font-family: Arial;
+}
+svg{
+  /* background: #ddd; */
+  /* odrb, aby sa zacinalo od zaciatku, na nule*/
+  transform: rotate(-90deg);
+
+}
+
+circle{
+  fill: none;
+  stroke-width: 2;
+}
+
+.underlay{
+  stroke: #ccc;
+}
+.progress{
+  stroke: #1da1f2;
+  stroke-width: 4;
+  transition: .2s stroke-width ease-in-out;
+}
+.tragedy{
+  /* prida sa, ked sa minu znaky*/
+  stroke-width: 5;
+  animation: blink .4s ease-out;
+}
+
+form > textarea{
+  width: 250px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.content{
+  margin: 0 auto;
+  width: 200px;
+}
+/* animacia bliknutia*/
+@keyframes blink {
+  0% {stroke-width: 5}
+  10% {stroke-width: 10}
+  100% {stroke-width: 5}
+}
+
+/*
+safe = #1da1f2;
+warm = #ffad1f;
+danfer = #e0245e;
+underlay = #ccc;;
+*/
+
+/* Classy pre zemnu farby kruhu*/
+
+.safe{
+  stroke: #1da1f2;
+}
+.warn{
+  stroke:#ffad1f;
+}
+.danger{
+  color: #e0245e;
+  stroke: #e0245e;
+}

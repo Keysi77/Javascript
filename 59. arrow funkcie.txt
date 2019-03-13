@@ -1,0 +1,44 @@
+Ak máš krátku funkciu s 1 parametrom, môžeš vďaka es6 vynecha
+
+- jedny ( zátvorky )
+- druhé { zátvorky }
+- slovíčka function a return
+
+
+// mame pole
+
+var redLetterMedia = [ 'Mike', 'Jay', 'Rich Evans' ];
+  
+// takto ho prebehneme v ES5
+
+redLetterMedia.map( function(name) {
+    return name.length;
+});
+  
+// takto v ES6
+redLetterMedia.map( name => name.length ); // vstup (meno funkcie) => vystup (return)
+// array.map(x=>x.length);
+// vhodne pre fzunkcie map, sort, foreach, filter ...
+
+
+Ak máš viac parametrov a riadkov, zápis je trochu dlhší, ale stále kratší:
+
+redLetterMedia.map( (name, i) => {
+    let times = 100;
+    return name.length * times;
+});
+
+
+Avšak krása je vedľajší efekt.
+Arrow functions hlavne inak obhospodarujú svoj this argument.
+Kuk ďalšie vid. 
+
+Arrow functions nemaju vlastny THIS, takze neplatia pravidla pre this ako v normalnom kode
+
+function Fraud() {
+    this.name = 'Rich Evans';
+    this.disease = 'diabetes';
+    this.health = 23;
+    setInterval( () => console.log(this.health--), 1000 );
+}
+var rich = new Fraud();

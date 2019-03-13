@@ -1,0 +1,15 @@
+// default oprerator
+function discount(price) {
+    price = price || 20;
+	// ak plati lava strana -> ulozi sa lava strana 
+	// ak lava neplati (je tam undefined, null a pod), tak sa ulozi prava strana
+}
+
+------------------------------------------------------------------------
+// default parametre, ktore sa daju prebit
+function discount(price = 10, perc = 10*2, tax = getTax()) {
+    // fancy math...
+}
+
+// vyhodnejši ma osetrene chyby ak by sa zadala 0 alebo null alebo undefined
+// moze sa ulozit aj funkcia getTax() aj matematicky vypocet perc = 10*2

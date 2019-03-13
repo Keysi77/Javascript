@@ -1,0 +1,47 @@
+80 ES6/23 MAP (ako objekt, kde kľúč môže byť aj ne-string)
+
+
+JavaScript je o objektoch. Používali sme ich na všetko, aj kde sa sa nehodili. V klasických objektoch kľúče môžu byť len stringy. Nové mapy sú ako objekty, kde kľúče aj hodnoty môžu byť akéhokoľvek typu. Čiže ako kľúč môžeš použiť napríklad HTML element a k nemu pribaliť meta dáta. 
+
+let logo = document.querySelector('#logo-default');
+let fake = document.querySelector('#fakebox');
+  
+var meta = new Map();
+  
+meta.set( logo, { isMoving: false, nice: true } );
+meta.set( fake, { isMoving: true } );
+
+
+S mapami sa hráme podobne ako so setmi:
+
+meta.get(logo)
+meta.size
+meta.has(logo)
+meta.has('balls')
+meta.delete(fake)
+meta.clear()
+  
+meta.forEach alebo for ( let item of meta )
+
+
+Mapám sa v programovacích jazykoch hovorí aj dictionaries. Slovníky. A môžeš ich použiť aj na... slovníky. 
+
+const dictionary = new Map();
+  
+dictionary.set('en', new Map()
+    .set('vasho is a hottie', 'vasho is a hottie')
+    .set('yes', 'yes')
+);
+  
+dictionary.set('ja', new Map()
+    .set('vasho is a hottie', 'vashoは魅力的です')
+    .set('yes', 'はい')
+);
+// pristupy k hodnote cez get   
+dictionary.get('ja').get('vasho is a hottie');
+dictionary.get('ja').get('yes');
+// ked je slovo neexistujuce ale spicificke dstaneme undefined co v klasickom poli nebolo mozne
+dictionary.get('ja').get('constructor'); // undefined
+
+
+Na ne sú mapy lepšie. Pretože objekty sú nečisté. Majú na seba nalepené všetky metódy a vlastnosti rodičov. Mapy nemajú. Kuk viiiiideo.

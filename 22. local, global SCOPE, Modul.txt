@@ -1,0 +1,28 @@
+funkcie - lokalny SCOPE - kazda premenna ktora sa vytvori vo funkcii existuje len v nej
+			- dve funkcie mozu amt premenne s rovnakym nazvom tie sa nevidia a nebudu sa prebijat
+
+window - globalny scope - su dostupne globalne vsade
+
+Anonymna funkcia:
+(function() {
+  
+}())     <--- zatvorky znamenaju "spusti funkciu"
+
+Do nej vieme obali premenné/funkcie:
+
+// samo sa spustajuca funkcia - prikald MODULA
+(function() {
+       
+    // toto nikto neuvidi
+    var tit = 1;
+    var biggerTit = 2;
+    var yesEvenBiggerThanThat = 5;
+  
+    // tato funkcia sa automaticky spusti
+    return {
+        countMeMaybe: function() {
+            return tit + biggerTit + yesEvenBiggerThanThat
+        }
+    }
+  
+}())

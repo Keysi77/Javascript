@@ -1,0 +1,52 @@
+DEKLAROVANIE - 'klasicky' sposob
+
+function menoFunkcie(){
+  // ...
+}
+
+
+EXPRESSION - tvrdenim, ze si ju ulozim do premennej, ale neprebehne HOISTING - nemoznio taku funkciu volat skor nez sa zadeklaruje
+
+var menoFunkcie = function (){
+  // ...
+}
+
+VYSLEDOK je rovnaky: menoFunkcie();
+
+
+IIEE - samospustajuca sa funkcia - funkcia ktora nema ziadne meno a okamzite samu seba zavola (vhodne na MODUL)
+
+var menoFunkcie = (function () {
+  // ...
+}());
+
+MODUL
+
+Eöte raz - vÔaka modulu vieme spolu patriace premennÈ a funkcie daù pod jednu strechu.
+»o d· kÛdu ötrukt˙ru. A t˝m ich izolujeme od glob·lneho kontextu. »o d· kÛdu bezpeËnosù.
+
+var Bros = (function() {
+      
+    // tu mozu byt premenne a funkcie, ktore nikto neuvidi
+    ...
+    ...
+  
+    // svet uvidi len to, co mu vratime
+    return {
+        all: getAllDudes,
+        getScore: getScore,
+        setScore: setScore,
+        update: updateDude
+    }
+  
+}());
+  
+  
+// teraz vonku mame 
+Bros.all;
+    
+// ale kedze javascript je super, getScore moze byt aj funkcia
+// takze vonku mame 
+Bros.getScore();
+  
+// ako keby to bol objekt v OOPcku

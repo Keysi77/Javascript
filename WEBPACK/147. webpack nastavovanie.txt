@@ -1,0 +1,28 @@
+147 WEBPACK 4+ zero config - bundling ÁNO, konfigurák NIE
+
+
+‘DINO RIDER #2’ od GUILLAUME SINGELIN
+:: https://www.kuvva.com/illustrations/b661cb6eced9af36b62dc0a9c95aa1e820131024064730
+
+
+
+terminal
+
+// vytvor package.json
+npm init -y
+  
+// webpack a terminal
+npm install --save-dev webpack webpack-cli
+  
+// alebo skratena forma
+npm i -D webpack webpack-cli
+ 
+
+package.json 
+
+// package.json
+"scripts": {
+  "dev": "webpack --mode development",
+  "build": "webpack --mode production",
+  "watch": "npm run dev -- --watch"
+},

@@ -1,0 +1,14 @@
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+body {
+	background: url('../img/congruent.png') repeat;
+	margin: 0;
+	height: 100vh;
+
+	padding: 50px;
+	color: #bada55;
+	font-size: 32px;
+	font-weight: bold;
+	font-family: "Segoe UI",Frutiger,"Frutiger Linotype","Dejavu Sans","Helvetica Neue",Arial,sans-serif;
+}

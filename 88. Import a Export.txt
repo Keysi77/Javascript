@@ -1,0 +1,64 @@
+88 ES6 Modules 03, IMPORT / EXPORT
+
+
+import (v súbore app.js)
+
+// naimportuj cely subor (ale toto vacsinou nebudes robit)
+import './lodash.min.js';
+  
+// naimportuj 2 objekty zo suboru
+import { theGoodNumber, doMath } from "./math.js";
+    
+// mozes ich premenovat 
+import {
+    theGoodNumber as nice,
+    doMath as sum
+} from "./math.js";
+  
+// naimportuj vsetko, pozivas cez math.theGoodNumber 
+import * as math from "./math.js";
+
+
+export (v súbore math.js)
+
+export let theGoodNumber = 69;
+  
+export function doMath(...rest) {
+    return rest.reduce((sum, val) => sum + val);
+}
+  
+// alebo si export nechas na koniec 
+export { doMath, theGoodNumber }
+  
+// mozes aj premenovat
+export {
+    doMath as sum,
+    theGoodNumber as nice
+}
+  
+// pri "default" mozes vynechat zatvorky pri importe
+export default class Mario { ... }
+import Mario, { theGoodNumber, doMath } from "./math.js";
+
+
+nezabudni type="module"
+
+<script src="./js/app.js" type="module"></script>
+
+
+es6 modules
+:: https://github.com/jedrichards/es6#modules
+:: https://github.com/DrkSephy/es6-cheatsheet#modules
+:: https://github.com/lukehoban/es6features#modules
+
+
+
+import / export
+:: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+:: https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
+
+kvalitný es6 modules článok
+:: https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
+
+kvalitný performance tweet
+:: https://twitter.com/paul_irish/status/979867890080915456

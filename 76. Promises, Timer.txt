@@ -1,0 +1,143 @@
+promise šablóna
+
+var promise = new Promise(function(resolve, reject) {
+  // sprav niečo zrejme asynchrónne (ajax, timer)
+  
+  if (/* everything is ok */) {
+    resolve("Stuff worked!");
+  }
+  else {
+    reject(Error("It broke"));
+  }
+});
+  
+// a takto to použiješ 
+promise.then(function(result) {
+  console.log(result); // "Stuff worked!"
+});
+  
+promise.catch(function(err) {
+  console.log(err); // Error: "It broke"
+});
+
+-------------FUNKCIA na TIMER odpocet----------------------------------
+
+Tu je funkcia, ktorá naštartuje odpočítavanie a vráti sľub. Ty do nej pošleš idčko 
+(hocijaké číslo napr., na tomto veľmi nezáleží) a čas (v milisekundách) 
+ako dlho sa má odpočítavať:
+
+timer cez promise
+
+function start(id, time) {
+    return new Promise( function(resolve, reject) {
+        setTimeout( () => resolve(`timer ${id} done`), time )
+    });
+}
+
+
+Keďže si použil promise, cez then() vieš reagovať na skočenie odpočítavania:
+
+start(1, 4000).then( res => console.log(res) );
+start(2, 1000).then( res => console.log(res) );
+start(3, 2500).then( res => console.log(res) );
+
+Pomocou Promise.all() a Promise.race() vieš spustiť funkciu keď dobehnú všetky sľuby alebo keď sa vráti prvý. 
+
+promise.all() a promise.race()
+
+// nastartujeme 3 casovace, kazdy vracia promise
+let timer1 = start(1, 4000);
+let timer2 = start(2, 1000);
+let timer3 = start(3, 2500);
+  
+// ked dobehnu VSETKY
+Promise.all([ timer1, timer2, timer3 ]).then(function(res) {
+    console.log('all done', res);
+});
+// napriklad pri hre ked zabijes vsetkych nepriatelov tak sa vypise ze si VYHRAL 
+  
+// ked dobehne PRVY
+Promise.race([ timer1, timer2, timer3 ]).then(function(res) {
+    console.log('found first', res);
+});
+// napriklad ked support caka pri telefone tak sa prideli prvy volny a necaka sa kym budu volni aj ostatni
+
+
+-------------skrátené then/catch zápisy--------------------------------
+
+promise = get('https://itunes.apple.com/search?term=kolowrat');
+    
+promise.then(
+    res => console.log( JSON.parse(res) )
+).catch(
+    err => console.error(err, 'OH NO')
+);
+  
+//     ALEBO
+  
+promise = get('https://itunes.apple.ggg/search?term=kolowrat');
+    
+promise.then(
+    res => console.log( JSON.parse(res) ),
+    err => console.error(err, 'OH NO')
+);
+  
+//     ALEBO
+  
+get('https://itunes.apple.com/search?term=kolowrat')
+    .then( res => console.log( JSON.parse(res) ))
+    .catch( err => console.error(err, 'OH NO') )
+
+
+
+
+Ak máš v kóde get() funkciu z minulého videa, takto môžeš spraviť AJAX žiadosť, spracovať jej údaje a podľa nich spraviť ďalšiu ajax žiadosť. A mohol by si pokračovať. Koľko to len dá.
+
+get('https://jsonplaceholder.typicode.com/posts')
+    .then( JSON.parse ) // premeni Json na objekt s ktorzm moyem pracovat
+    .then( res => get(`https://jsonplaceholder.typicode.com/users/${res[0].userId}`) )
+    .then( res => console.log(JSON.parse(res)) )
+    .catch( err => console.error(err, 'OH NO') );
+
+///------------Seriovy ---------////
+
+(async function (){
+    try{
+		let timer1 = await start(1,4000);
+		let timer2 = await start(2,1000);
+		let timer3 = await start(3,2500);
+  		console.log('done');
+    }	
+    catch(err){
+        console.log('nope', err);
+    }
+}())
+
+// cakaju jeden na druheho cize cely proces bude trvat 4+1+2,5s
+OUTPUT 7,5 sekundy
+timer 1 done
+timer 2 done
+timer 3 done
+///------------ Paralelny timer ---------///
+
+(async function (){
+    try{
+		let timer1 = start(1,4000);
+		let timer2 = start(2,1000);
+		let timer3 = start(3,2500);
+		await timer1;
+		await timer2;
+		await timer3;
+		
+  		console.log('done');
+    }	
+    catch(err){
+        console.log('nope', err);
+    }
+}())
+
+// spustili sa paralelne naraz, cize proces trval 4 sekundy (najdlhsi cas timeru)
+OUTPUT 4 sekundy - podla rychlosti timeru sa zoradia
+timer 2 done
+timer 3 done
+timer 1 done

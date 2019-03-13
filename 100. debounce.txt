@@ -1,0 +1,28 @@
+100 Debounce (video 100, ha!)
+
+
+Debounce ti dovolí odpalíš kód až keď prestaneš na chvíľu. Napríklad ak na pol sekundy prestaneš písať. Alebo ak na sekundu prestaneš scrollovať, atď. 
+
+
+
+let debounceTimer;
+// debounce
+addEventListener('scroll', () => {
+  
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+        console.log( 'position stored in db' );
+    }, 1000);
+  
+});
+
+
+Tento kód sa spustí, až keď na sekundu prestaneš scrollovať.
+Btw, keď už si tu, toto je video číslo 100 v kurze:)
+
+Sranda, si toho riadne veľa musel nakukať. Si sa namakal. Good job!
+Ale neboj nie si v tom sám, nechceš vedieť, koľko krát som to ja musel vidieť.
+
+Juj, btw spravím si reklamu na tie linky čo sú dole.
+Poklikaj ich. Polajkuj ma;) 
+

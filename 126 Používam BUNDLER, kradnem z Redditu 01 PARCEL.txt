@@ -1,0 +1,20 @@
+126 Používam BUNDLER, kradnem z Redditu 01
+
+
+parcel
+:: https://parceljs.org
+
+
+
+npm install -g parcel-bundler
+
+
+bojack reddit
+:: https://www.reddit.com/r/BoJackHorseman
+:: https://www.reddit.com/r/BoJackHorseman.json
+
+
+
+yarn init -y
+yarn add lodash axios
+parcel index.html

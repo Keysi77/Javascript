@@ -1,0 +1,78 @@
+129 Užitočné NPM package, tvoj švédsky stôl technológií, nažer sa
+
+
+robust javascript
+:: https://molily.de/robust-javascript
+
+najväčšie klasiky
+:: https://jquery.com
+:: https://underscorejs.org
+:: https://lodash.com
+:: https://momentjs.com
+
+grafy, štatistiky, vizualizácie
+:: http://www.chartjs.org
+:: https://github.com/d3/d3/wiki/Gallery
+
+kalendár
+:: http://ui.toast.com/tui-calendar
+
+ksichty
+:: https://tkv.io/posts/picojs-intro
+
+3D, herné enginy, renderery
+:: http://www.melonjs.org
+:: http://www.pixijs.com
+:: https://github.com/mrdoob/three.js
+:: https://jsfiddle.net/f2Lommf5
+
+2D animácie
+:: http://velocityjs.org
+:: http://animejs
+
+čísla
+:: http://numeraljs.com
+
+validácia
+:: https://github.com/guillaumepotier/Parsley.js
+:: http://is.js.org
+:: https://github.com/arasatasaygin/is.js
+
+tools
+:: https://www.npmjs.com
+:: https://yarnpkg.com
+:: https://webpack.js.org
+:: https://parceljs.org
+:: https://eslint.org
+
+zoznamy
+:: https://github.com/topics/javascript?o=desc&s=stars
+:: https://github.com/sorrycc/awesome-javascript#loaders
+:: https://www.npmjs.com/browse/depended
+
+ajax 'n stuff
+:: https://github.com/axios/axios
+:: https://github.com/request/request
+
+video
+:: https://github.com/videojs/video.js
+
+drag 'n drop
+:: https://bevacqua.github.io/dragula
+
+testing
+:: https://github.com/mochajs/mocha
+:: https://github.com/chaijs/chai
+:: https://github.com/sinonjs/sinon
+
+node.js
+:: https://github.com/cheeriojs/cheerio
+:: https://github.com/request/request
+:: https://github.com/Automattic/mongoose
+:: https://github.com/expressjs/express
+
+ak nemáš dosť
+:: https://medium.com/javascript-scene/top-javascript-libraries-tech-to-learn-in-2018-c38028e028e6
+:: https://blog.bitsrc.io/11-javascript-utility-libraries-you-should-know-in-2018-3646fb31ade
+:: http://jamesknelson.com/six-essential-javascript-libraries/
+

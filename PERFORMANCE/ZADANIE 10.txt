@@ -1,0 +1,23 @@
+Zadanie 10
+1) Stiahni si WEB WORKERS kód z materiálov.
+Pridaj tam gombík.
+
+Uprav kód tak, že budeš mať veľký, nespracovaný zoznam.
+A až keď klikneš na gombík, dáta sa pošlú workerovi, ktorý ich usporiada, prefiltruje a pošle naspäť, pridajú sa do zoznamu.
+
+Čiže všetko sa stane až po kliknutí na gombík:)
+
+
+
+2) Stiahni si MICRO TASKS kód.
+Sprav:
+
+a) namiesto rAF použi setTimeout 
+čiže... šak celkom výstižné to je, skús si predstaviť, že neexistuje requestAnimationFrame a dosiahnuť podobný výsledok 
+
+b) prerob to na FOR cyklus, ktorý spomínam vo videu
+že task rozbiješ na kopu for cyklov, každý cyklus pridá 100 elementov 
+
+Že nebudeš sledovať žiadne 3 milisekundy ani nič, každá várka pridá 100 elementov.
+Resp. vytvor si const, a toľkokrát sa cyklus otočí. 
+

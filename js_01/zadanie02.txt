@@ -1,0 +1,89 @@
+Zadanie 02
+Tvoja nultá úloha je pozrieť si nasledovné aspoň 2 videá. Ideálne 3. Keď budeš mať nastavený editor kódu, ideš na to.
+
+
+a) Rozchoď kód
+Prvá úloha je stiahnuť nejaký môj zdroják z materiálov.
+Napríklad brilantné nazvaný "(kód) prvý kód".
+A otvoriť stránku v prehliadači.
+A nájsť v prehliadači developer tools.
+A nájsť konzolu.
+A potom do môjho kódu pridať riadok:
+
+ console.log('Ahoj, truľo');
+
+
+A skontrolovať, či ho vidíš v konzole.
+Gratulujem, práve si programoval!
+
+A potom priamo do konzole (v prehliadači) napísať 4 + 12.
+Práve si programoval s matematikou!
+
+A teraz už vieš ako na to!
+Tak poď na to.
+
+
+
+
+b) Vyrob funkciu
+S názvom pozdrav(), ktorú keď zavoláš, vypíše do konzole:
+
+Ahoj, truľo.
+
+
+Uprav ju tak, že do nej môžeš hodiť meno. Keď tam hodíš  Vašo, takto pozdrav('Vašo'), vypíše
+
+Ahoj, Vašo, ty truľo.
+
+Teraz skús pri výpise console.log vymeniť za alert(). Alert NEBUDEŠ NIKDY V ŽIVOTE NA NIČ NAOZAJ POUŽÍVAŤ, PRE KRISTA PÁNA ŤA OCHRAŇUJ, ale   môžeš teraz, keď sa učíš javascriptovať. Potom už nikdy.
+
+
+c) Vyžobri 2 čísla
+Skús alert('Ahoj truľo'). Prepíš alert() na prompt(). Sprav
+
+var a = prompt('Zadaj prvé číslo');
+
+
+Prompt od teba chce, aby si doň zadal text. Ten text sa uloží do premennej a. Vypýtaj si takto 2 čísla: a a b.
+
+Pozor, v premenných budeš mať text.
+Tvoj úloha je vypísať súčet týchto čísel.
+Ale keďže máš text, najprv ho musíš prehodiť na číslo.
+
+Cez console.log() vypíš ich súčet.
+
+
+
+d) Prerob čísla na funkciu
+Vyrob si novú funkciu, ktorá spraví ten súčet z minula. Čiže funkcia, ktorá len dostane 2 cíšla a spraví console.log(), čím ich vypíše.
+
+Tomu sa hovorí, že funkcia má side effect.
+Keď priamo funkcia spraví nejaký výpis alebo zmení hodnotu, ktorá je mimo nej.
+
+Zvyčajne totiž funkcie chceme mať kompletne izolované od zvyšku kódu. Väčšina funkcií funguje tak, že ty do nich naposielaš hodnoty, ona ich spracuje, povytvára si vlastné premenné atď. A na konci len vráti výsledok do hlavného programu cez return.
+
+Čiže najprv sprav funkciu, ktorá dostane 2 čísla a rovno vypíše súčet.
+Potom ju prerob tak, aby dostala 2 čísla a vrátila ich súčet cez return, ktorý  cez console.log potom vypíšeš v hlavnom programe.
+
+
+
+e) Funkcia čo vypočíta celkovú sumu
+Sprav funkciu, ktora ak mam premenne, ze
+
+var pocetProduktov = 5;
+var cenaJedneho = 300;
+a zavolam ju nasledovne
+
+how_much( pocetProduktov, cenaJedneho );
+do stranky vypise
+
+<p>
+    Kupil si 5 predmetov za 1500€ dokopy.
+</p>
+Cize jednak sprav funkciu, ktora vrati vysledok. A jednak si vykusaj document.createElement a textContent na vytvorenie a naplnenie nového <p> elementu.
+
+
+
+Prestal som pisat dlzne a makcene lebo uz sa mi nechcelo.
+Tu som aj ciarku zabudal napisat.
+Chja

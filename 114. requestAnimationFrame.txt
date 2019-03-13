@@ -1,0 +1,119 @@
+114 requestAnimationFrame (a nie setTimeout/setInterval)
+
+
+setInterval opakuje kód každých x milisekúnd
+
+setInterval(() => {
+    console.log( performance.now() );
+}, 10);
+
+
+Ale setTimeout to vie tiež (a kinda lepšie)
+
+const tick = function() {
+    console.log( performance.now() );
+    setTimeout(tick, 1000); // <-- tuto
+}
+tick();
+
+
+Ale requestAnimationFrame to vie ešte lepšie.
+Kukaj, očúvaj a uvidíš (a upočuješ).
+
+
+
+requestAnimationFrame
+:: https://dev.opera.com/articles/better-performance-with-requestanimationframe/
+:: http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
+:: https://developers.google.com/web/fundamentals/performance/rendering/optimize-javascript-execution
+:: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+:: https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationfram...
+:: http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
+----------------------------------------------------------------------------------------------------------------------------
+115 requestAnimationFrame - zosynchronizuj sa s monitorom
+
+- vyziadas od pocitaca kedy bude kreslit dalsi frame na obrazovku
+requestAnimationFrame() je super na (okrem iného) animácie, pretože ti dovolí odpalíť kód na začiatku každého frejmu. Resp predtým, ako je prehliadač pripravený robiť paint, kresliť na obrazovku.
+
+Čiže tvoj kód bude pekne zosynchronizovaný s frekvenciou monitora = bude pekne plynulý. Navyše šetrí CPU a baterku. Toto chceš namiesto timeoutu alebo intervalu.
+
+
+
+Používaj podobne ako timeout:
+
+// 1
+const tick = function() {
+    ...kód sem...
+    requestAnimationFrame(tick);
+}
+tick();
+  
+  
+// 2
+const tick = () => {
+    ...kód sem...
+    requestAnimationFrame(tick);
+}
+tick();
+  
+  
+// 3
+(function tick() {
+    ...kód sem...
+    requestAnimationFrame(tick);
+}())
+
+
+Tri spôsoby ako napísať ti isté, podľa toho ako cool chceš byť.
+
+
+
+
+Tick tock tick tock (posúvame sa)
+
+const ballZone = document.querySelector('.ball-zone');
+let x = -400;
+  
+(function tick() {
+  
+    ballZone.style.transform = `translate(${x++}px, 0px)`;
+    requestAnimationFrame(tick);
+  
+}())
+
+----------------------------------------------------------------------------------------------------------------------------
+116 setInterval vs setTimeout vs rAF (kedy ktorý? jeden nikdy)
+
+
+radšej setTimeout ako setInterval
+:: https://javascript.info/settimeout-setinterval#recursive-settimeout
+:: http://reallifejs.com/brainchunks/repeated-events-timeout-or-interval/
+:: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval#Notes
+
+
+
+Oba sú veľmi približné, ale iným spôsobom. Timeout aspoň počká, kým sa tvoja funkcia spustí, predtým ako spraví ďalší odpal. Interval nie a môže nazbierať odpaly a všetky ich vyregurgitovať naraz, čo nie je fajn. 
+
+Používaj setTimeout().
+Ak robíš animácie (alebo všeobecne kreslíš na obrazovku), použi requestAnimationFrame() rAF rAF rAF. 
+----------------------------------------------------------------------------------------------------------------------------
+117 Multithreading, buď vláčna, vláknatá
+
+
+JavaScript je single-threaded.
+Zjednoduchševšia verzia - naraz môže bežať len jeden .js súbor.
+
+Ale to sa mení. Nie samé od seba.
+Web Workers to menia.
+
+:: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API
+
+Weboví roboši vedia spustiť script vo vlastnom vlákne na pozadí.
+Čiže kým tvoj app.js kreslí animácie po obrazovke, worker súbežne môže robiť ťažkú matematiku* vzadu v kúte.
+
+
+
+* pôvodne som napísal metamatiku a divil som sa, prečo je to podčiarknuté. Meta matika. Cool. 
+
+Worker nema pristup k DOM, document a window !!!!!
+vhodny na vyhladanie, usporiaduvanie, triedenie, matematicke vypocty, databazu...

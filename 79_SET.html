@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <input type="text" name="" value="">
+      <button type="button" name="button">add</button>
+
+      <script>
+      // symulacia ukladania tagov
+          let input =document.querySelector('input'),
+              button = document.querySelector('button');
+      // ukladanie tagov do pola
+      //stary sposob cez pole
+      // let tags = [];
+      // novy sposob cez SET kolekciu
+      let tags = new Set();
+
+      button.addEventListener('click', () => {
+        //  tags.push(input.value);
+          tags.add(input.value);
+          console.clear();
+          // foreach pre vypisanie kazdej hodnoty
+          tags.forEach(val => console.log(val))
+
+      })
+      </script>
+  </body>
+</html>

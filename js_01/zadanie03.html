@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Click me, lick me</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<article id="article">
+		<ul id="browser">
+			<!-- -->
+		</ul>
+		<ul id="user">
+			<!-- -->
+		</ul>
+	</article>
+
+
+	<script>
+
+
+	document.body.addEventListener('keypress', function(event) {
+
+
+	  var oldLeft = getComputedStyle(document.body).left,
+	      newLeft,
+	      oldTop = getComputedStyle(document.body).top,
+	      newTop;
+
+	  oldLeft = parseInt(oldLeft, 10);
+	  oldTop = parseInt(oldTop, 10);
+
+	  if ( event.key == 'a') {
+	    newLeft = oldLeft - 10;
+	  }
+	  else if ( event.key == 'd') {
+	    newLeft = oldLeft + 10;
+	  }
+	  else if ( event.key == 'w') {
+	    newTop= oldTop- 10;
+	  }
+	  else if ( event.key == 's') {
+	    newTop= oldTop +10;
+	  }
+
+
+
+	  document.body.style.left = newLeft + 'px';
+	  document.body.style.top = newTop + 'px';
+
+	});
+
+	function vacsieCislo(cislo1, cislo2){
+		if (cislo1 > cislo2) {
+			console.log(cislo1);
+		}else {
+			console.log(cislo2);
+		}
+
+	}
+  vacsieCislo(50, 51);
+
+
+	function sucetPola(){
+		var array = [1,2,5,7,9,15];
+		console.log(array);
+	}
+	sucetPola();
+	var numbers = [65, 44, 12, 4];
+
+	function getSum(total, num) {
+	    return total + num;
+	}
+	console.log(getSum(numbers));
+
+	</script>
+
+</body>
+</html>

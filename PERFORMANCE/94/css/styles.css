@@ -1,0 +1,22 @@
+body{
+    min-height: 2500px;
+}
+
+
+.progress{
+    width: 100%;
+    height: 32px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, red , yellow);
+}
+
+.better{
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: top left; 
+    /* bude zacinat od lava top */
+    transition: .25s transform ease; 
+    /* ked nastane transform bude prebiehat animacia ease po dobu pol sekundy */
+}

@@ -1,0 +1,28 @@
+111 DOM výkon 01 / odmeraj si koľko ti trvá (kód)
+
+
+DOM manipulácie stoja čas. 
+Hlavne ak ich robíš veľa.
+Rob to efektívne.
+
+A tom budú tieto 3 videá.
+
+
+
+DOM performance
+:: https://howchoo.com/g/mmu0nguznjg/learn-the-slow-and-fast-way-to-append-elements-to-the-dom
+:: https://coderwall.com/p/o9ws2g/why-you-should-always-append-dom-elements-using-documentfragments
+:: https://codeburst.io/taming-huge-collections-of-dom-nodes-bebafdba332
+:: https://dev.opera.com/articles/efficient-javascript/#modifyingtree
+:: https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and...
+
+
+
+performance.now()
+:: https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
+:: https://stackoverflow.com/questions/30795525/performance-now-vs-date-now
+
+
+
+console.table() fun
+:: https://alligator.io/js/console-table/

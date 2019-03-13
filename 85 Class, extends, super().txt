@@ -1,0 +1,99 @@
+85 ES6/28 Class, extends, super()
+
+
+Classy poznáš z iných programovacích jazykov. JavaScript ich nepozná, ale ES6 sa tvári, že hej. Na pozadí stále používa funkcie, ktoré vytvárajú objekty, ktoré dedia od svojho prototypu.
+
+Ale to ťa možno nezaujíma.
+Teba zaujíma, ako vyrobíš class v JavaScripte.
+Takto:
+
+class Human {
+  
+    // to mozes povytvarat vlastnsoti    
+    constructor( first, last, age ) {
+        this.first = first;
+        this.last = last;
+        this.age = age;
+    }
+  
+    // mozes pouzivat gettery
+    get fullName() {
+        return this.first + ' ' + this.last;
+    }
+  
+    // metody
+    who() {
+        return `${this.fullName} is ${this.age} years old.`;
+    }
+    
+}
+
+
+A ideme na to:
+
+let people = [
+    new Human( 'Mária', 'Trošková', 15 ),
+    new Human( 'Tomáš', 'Maštalír', 33 ),
+    new Human( 'Tim',  'Heidecker', 40 )
+];
+
+
+A môžeš dediť!
+A spraviť si legendu!
+// dedicnost, bude dedit od Human objektu
+
+class Legend extends Human {
+  
+    constructor( ...args ) {
+	// super zavoal konstruktor rodica
+	// bude spustat tie metody ktore su vytvorene na hlavnom
+	// args vsetky argumenty z Human fisrt, last, age
+	classe Human
+        super( ...args ); // super(first, last, age);
+  
+        this.hits = [
+            'Voňavky dievčat',
+            'Kamarátka nádej',
+            'Tri štvrte na jeseň',
+            'Chlapčenský úsmev'
+        ];
+    }
+  
+    writeHit() {
+        let hit = this.hits[ Math.floor(Math.random() * this.hits.length) ],
+        hit = hit.toUpperCase();
+  
+        return super.who() + `\nAnd he just wrote ${hit}.`;
+    }
+  
+}
+  
+// yep
+let legend = new Legend('Vašo', 'Pat', 33);
+
+
+Čo je dôležité? Hm, mať veľa spánku.
+S tým mám ja problém.
+Ale napríklad cez super() sa dostaneš do konštruktoru alebo metódam rodičovnskej Human triedy.
+
+
+
+Dokonca môžeš rozširovať (extendovať) vstavané globálne objekty.
+Napríklad si vyrobiť vlastný (lepší) Array.
+Ktorý má random:
+
+class YabArray extends Array {
+    constructor(...args) { super(...args); }
+  
+    static random(arr) {
+        return arr[ Math.floor(Math.random() * arr.length) ]
+    }
+}
+  
+// pretoze potom
+YabArray.random(this.hits)
+
+
+Nie si teraz tak štastná?
+Myslel som si.
+

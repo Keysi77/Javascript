@@ -1,0 +1,114 @@
+90 [BONUS] Vue.js appka 01: reaktívny kód
+
+
+vue.js
+:: https://vuejs.org
+
+vue.js chrome extánzia (určo je aj na firefox)
+:: https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd
+
+
+Vue.js ti (podobne ako React alebo Angular) pomáha s tvorbou reaktívnych UI. Čo najlepšie pochopíš z videa. Pointa: dnešné stránky sa silno podobajú na aplikácie v počítači alebo v telefóne ktorý si berieš na záchod.
+
+Tukáš, klikáš, všeko sa mení, všetko sa animuje.
+HTML kód okamžite reaguje na vstupy používateľa.
+
+Kopa aplikácií čo máš v telefóne sú v skutočnosti stránky. A ani o tom nevieš;) V čistom JavaScripte sa takto reaktívne stránky dajú spraviť, len je to trocha o hubu a zdĺhavé. Reaktívne frameworky (napr. Vue) s tým pomáhajú. A je s nimi sranda:)
+
+
+
+// prihod do stranky
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+  
+// tu sa bude diat vsetka sranda
+<div id="app">
+  Hello {{ name }}.
+</div>  
+  
+// takto ju nakopnes
+<script>
+const app = new Vue({
+    el: '#app',
+    data: {
+        name: 'Vašo'
+    }
+})
+</script>
+
+---------------------------------------------------------------
+91 [BONUS] Vue.js appka 02: reaktívne elementy
+
+
+Zvyklo byť, že HTML, CSS a JS sme striktne držali od seba. Keď si použil style atribút alebo vpísal javascript priamo do HTML elementu, nakopali sme ti prdel. 
+
+Reaktívne frameworky túto konvenciu jemne nabúrali. 
+HTML vždy bolo o obsahu, výzor bol CSS, správanie bolo JS.
+Reaktívne frameworky sa v podstate snažia rozšíriť HTML elementy o schopnosti.
+
+
+Môžeš im pridať správanie. Môžeš im pridať pravidlá. Môžeš im pridať podmienky:
+
+// vyrobi sa <li> pre kazdy zaznam
+<li v-for="dude in characters">
+    {{ dude }}
+  
+    // iba ak plati podmienka
+    <small v-if="dude.length < 5">
+        - lol, short name
+    </small>
+</li>
+
+
+Môžeš na ne naviazať metódy:
+
+<a class="ctrl" @click.prevent="remove(dude)">x</a>
+<form class="add-new" @keydown.enter="add"></form>
+
+
+Môžeš pridávať/brať classy.
+Môžeš pozrieť video a vidieť po prdel ďalších frajerín:)
+--------------------------------------------------------------------
+
+vue.js animácie
+:: https://vuejs.org/v2/guide/transitions.html
+
+
+Ak chceš animovať element, vyrobíš mu CSS classy a uzavrieš ho do  <transition> elementu.
+Ak chceš animovať zoznam, <transition-group> je tvoj kamarát.
+
+
+
+<transition-group name="dude" tag="ul">
+    <li class="dude" v-for="(dude, index) in characters" :key="index">
+        <a class="ctrl" @click.prevent="remove(dude)">x</a>
+  
+        <article :class="{ faded: dude.cool < 10, gold: dude.cool > 50 }">
+            {{ dude.who }}
+            {{ dude.wat }}
+        </article>
+  
+        <input class="ctrl" type="number" v-model.number="dude.cool">
+    </li>
+</transition-group>
+
+
+Povieš ako má animácia skočiť a začať:
+
+.dude-enter-active, .dude-leave-active {
+  transition: all .20s;
+}
+.dude-enter, .dude-leave-to {
+  opacity: 0;
+  transform: scale(.75);
+}
+
+
+A medzitým píšeš JavaScript.
+Kopu JavaScriptu.
+Taký JavaScript, ako sa učíš v tomto kurze:)
+
+Toto bola odbočka do Vue sveta.
+Viac sa mu budem venovať v budúcom Vue kurze, v kurze o reaktívnych aplikáciach a frameworkoch.  
+
+Medzitým je ešte kopa JavaScript vecí, ktoré potrebujeme zmáknuť, tak poďme na to;)
+Resp. poďme ešte na jednu, poslednú odbočku, kde sa naučíme klamať botov a robotov (a iné synonymá). 

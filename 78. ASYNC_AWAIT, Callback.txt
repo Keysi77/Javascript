@@ -1,0 +1,59 @@
+AJAX = pytame si data na pozadi bez toho aby sme blokovali prehliadac
+Callback = funkcia ktora nam zabezneci asynchronny prenos dat
+
+8 ES6/21 ASYNC/AWAIT (prax), callback hell choď preč
+
+
+ASYNC/AWAIT ti pomôže písať asynchrónny kód ako keby bol klasický, synchrónny. Je to funkcia, ktorá sa vie zastaviť, kým čaká na hodnotu. Dôležité ale je, že počas čakania neblokuje prehliadač.
+
+Napíšeš funkciu, kydneš pred ňu async a pred každú hodnotu, na ktorú si chceš počkať, šlahneš await:
+
+async function doStuff() {
+// async znamena ze povieme funkcii aby bezala subezne s ostatnymi funkciami
+
+    let comments = await get('https://jsonplaceholder.typicode.com/comments');
+    let post = await get('https://jsonplaceholder.typicode.com/posts/' + comments[0].postId);
+    let user = await get('https://jsonplaceholder.typicode.com/users/' + post.userId);
+// pomocou await povieme aby funkcia cakala na hodnotu, resp na vysledok akcie
+
+    console.log( user.name );
+}
+  
+doStuff();
+
+
+Môžeš písať kód tak, ako si vždy bol zvyknutý.
+Aj pre odchytenie chýb môžeš použiť klasický try/catch:
+
+(async function() {
+    try {
+        let comments = await get('https://jsonplaceholder.typicode.com/comments');
+        let post = await get('https://jsonplaceholder.typicode.com/posts/' + comments[0].postId);
+        let user = await get('https://jsonplaceholder.typicode.com/users/' + post.userId);
+  
+        console.log( user.name );
+    }
+    catch (err) {
+        console.log('nope', err);
+    }
+}())
+
+
+V tomto príklade som z funkcie spavil IIFE (samo sa spúšťajúcu anonymnú funkciu). A znova, stále používam get() funkciu, ktorá v JS neexistuje, ale nájdeš ju v a pod videom Promises 01.
+
+
+
+async / await
+:: http://brm.sk/828/konecne-poriadny-javascript-edicia-2017
+:: https://dev.to/siwalik/async-programming-basics-every-js-developer-should-know-in-2018-a9c
+:: https://developers.google.com/web/fundamentals/primers/async-functions
+::https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518d...
+
+generators / promises
+:: https://davidwalsh.name/async-generators
+:: https://www.promisejs.org/generators
+:: https://medium.com/javascript-scene/the-hidden-power-of-es6-generators-observable-async-flow-control...
+:: https://medium.freecodecamp.org/write-modern-asynchronous-javascript-using-promises-generators-and-c...
+
+async/await hell
+:: https://medium.freecodecamp.org/avoiding-the-async-await-hell-c77a0fb71c4c

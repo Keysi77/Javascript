@@ -1,0 +1,65 @@
+83 ES6/26 Proxies, sprav si špióna, zostaneš čistý
+
+
+Proxy objekt ti pomôže s validáciou. Alebo testovaním. Napríklad môžeš všetky testovaco/validačné funkcie odpratať do proxy objektu, vďaka čomu tvoj pôvodný objekt zostane pekne čistý.
+
+Ak testuješ, po konci testovania môže proxy kód zo stránky vyhodiť a nemusíš sa piplať v objekte. 
+
+Ak validuješ, kód je plný škaredých porovnávačiek a kontrolovačiek.
+Tie si môžeš odpratať do proxy a nemusíš sa na ne pozerať, keď pracuješ s objektom. 
+
+// krasny cisty objekt
+let legend = {
+    first: 'vašo',
+    last: 'patejdl',
+    age: 31
+}
+  
+// vsetku validaciu odpraceme do proxy
+legend = new Proxy(legend, {
+	// pasca kedy sa snazi niekto zmenit hodnotu
+	// rovnako tak by fungovala aj pasca na get, ked sa pristupuje k hodnote
+	// target je objekt ku ktoremu sme sa pokusili pristupit
+	// name nazov vlastnosti
+	// value je nova hodnota ktoru sa snazime zapisat do objektu
+    set: function( target, name, value ) {
+        if ( name === 'age' ) {
+            if ( ! Number.isInteger(value) ) return console.error(`that's not a number, dumbass`);
+        }
+        else if ( name == 'name' ) {
+            if ( value.length > 200 ) return console.error('too long');
+        }
+  // nastavujem vlastnot ktora je ulozena v name na hodnotu value
+        target[name] = value;
+    }
+});
+
+
+Funguje to na princípe traps. Pásc. 
+Pascí.
+Pasiec.
+
+Nastražil som set pascu, čiže keď niekto skúsi uložiť vek, skontrolujeme, či to bolo číslo doprdele furt!
+Zoznam pasác nájdeš dole v odkazoch.
+
+
+
+A teraz:
+
+legend.age // 31
+legend.age = 13 // ok
+legend.age = 'balls' // CHYBA
+
+
+proxy na metódy
+:: http://2ality.com/2015/10/intercepting-method-calls.html
+
+
+
+trap je zlý hudobný žáner a ak ho počúvaš, pravdepodobne si zlý človek*
+:: https://github.com/jedrichards/es6#more-traps
+:: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy#A_complete_tr...
+
+*čo si budeme hovoriť
+som starý človek
+

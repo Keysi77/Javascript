@@ -1,0 +1,42 @@
+Iterator:
+
+Ak máš pole a vypýtaš si od neho povedzme .keys() alebo .entries(), vráti sa ti iterátor. Je to objekt, cez ktorý sa môžeš posúvať. Krok za krokom. 
+
+// máš pole
+const RLM = [ 'Mike', 'Jay', 'Rich Evans' ];
+  
+// entries to vráti dvojkombinácie kľuč-hodnota
+// vo forme iterátora
+let iterator = RLM.entries();
+  
+// od neho si môžeš vypýtať prvý záznam
+iterator.next();
+  
+// neskôr druhý, teraz chceš konkrétne hodnotu 
+iterator.next().value;
+  
+// kedykoľvek sa môžeš spýtať, či už sme skončili
+iterator.next().done; 
+
+
+Predstavi si pole a forEach - ten celé pole prebehne naraz. Spracuje všetky hodnoty na jeden šup. Iterátor je ako tá step funkcia, čo bola na VHS/DVD prehrávačoch. Kde si film môžeš posúvať obrázok po obrázku. Ako ja som si posúval Gladiátora.
+
+Bola tam scéna, kde sám pán Štefan Gladiátor™ odsekne dvoma mečmi niekomu hlavu. A za behu to vyzerá hrozne realisticky. Ale keď si to krokuješ, vidíš jak na jednom obrázku je hlava na krku, v druhom pol metra v lufte a je to veľmi vtipné a pochopíš, že všetko je len lož. Lož!
+
+
+
+Takže for...of cyklus.
+
+Je to cyklus, ktorý vie prebehnúť cez všetko. Napríklad forEach nevie, ale for...of vie. Aj cez veci, ktoré ešte nepoznáš. Ak sa ti nechce krokovať, môžeš ním prebehnúť aj všetky hodnoty iterátora.
+
+
+
+// okrem ineho zvladne iterator
+for ( let val of RLM.entries() ) {
+    console.log( val );
+}
+  
+// ale aj arguments object povedzme
+(function(){
+    for ( let arg of arguments ) console.log( arg );
+}(1, 2, 3));

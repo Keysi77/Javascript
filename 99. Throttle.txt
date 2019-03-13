@@ -1,0 +1,24 @@
+99 Throttle
+
+
+Ak spúšťaš kód po každom scrolle, pohyby myši, kliknutí... spúštaš ho pričasto;)
+Toto ti dovolí nastaviť limit ako často sa kód môže odpáliť. 
+
+
+
+throttling
+
+let scheduled = false;
+  
+if ( ! scheduled ) {
+    scheduled = true;
+    setTimeout(() => {
+  
+        // ...sem napíš kód čo sa spustí max raz za 250 milisekúnd
+  
+        scheduled = false;
+    }, 250);
+}
+
+
+alebo;) https://lodash.com/docs/4.17.5#throttle

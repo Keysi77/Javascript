@@ -1,0 +1,119 @@
+node_modules\.bin\babel src_js\app.js --out-file js\app.js
+
+alebo pridany watcher (sleduje ulozenie) a uklada celu zlozku (ak je viacero JS suborov)
+skrateny zapis:
+
+-w je watcher
+-d je directory
+src_js a js su nazvy folderov pre JS 
+
+node_modules\.bin\babel src_js -w -d js    
+
+POLYFILL: (aby prelozil funkcie z ES6 do staršich napr: Array.from()...)
+npm install --save babel-polyfill
+
+Do stranky pridat nad vsetky JScripty
+<script src="node_modules/babel-polyfill/dist/polyfill.min.js" defer=""></script>
+
+
+51 NPM, konzolovı rıchlokurz, local vs global inštalácia
+- treba mat naisntalovany Node.js !!!
+
+// najdi package
+npm search lodash
+  
+// blizsie info o nom
+npm view lodash
+  
+// stiahni lodash
+npm install lodash
+
+
+A taktie toto môeš uka do konzole:
+
+
+
+// version
+-v
+  
+// help
+-h
+  
+// ZASTAV VSETKO
+ctrl + c 
+
+
+Chceš ešte viac?  Ja viem, e chceš
+
+
+
+// nainstalovane pekidze
+npm list -g --depth 0
+  
+// globalne nainstalovane pekidze
+npm list -g --depth 0
+  
+// na macu mozes instalovat programy cez brew.sh
+brew leaves
+  
+// ked chces aj zoznam nainstalovanych dependencies (mac)
+brew list
+
+
+// instaluj pekidz
+npm install eslint
+  
+// instaluj ho GLOBALNE
+npm install -g eslint
+
+// najprv sa nastav do adresara suborov stranky
+cd cesta/do/adresara/kde/mam/stranku-01
+  
+// ak si to chces vyklikat
+npm init
+  
+// ak chces nech to npm od-entruje za teba
+npm init -y
+npm init -yes
+
+// kolko zabera kazdy subor v adresari
+du -sh *
+  
+// kolko zabera cely adresar
+du -sh .
+
+// pekidze, ktore maju skoncit na stranke 
+npm install lodash
+  
+// pekidze, ktore potrebujes len ty, programator
+npm install babel-cli --save-dev
+
+// len dependencies
+npm install --only=prod
+  
+// len devDependencies
+npm install --only=dev
+  
+// vsetky
+npm install
+
+// vytvorit package.json
+npm init -y
+  
+// pridat babel-cli do dev
+npm install babel-cli --save-dev
+  
+// pridas set pluginov, co menia es6 na es5
+npm install babel-preset-env --save-dev
+
+A vytvoríš do adresára tvojej stránky súbor .babelrc
+
+{
+    "presets": ["env"]
+}
+
+Povieš, ktorı set pluginov v òom chceš pouíva.
+A si pripravenı písa kód.
+Keï skonèíš, zadelíš:
+
+ node_modules/.bin/babel src/app.js --out-file js/app.js

@@ -1,0 +1,73 @@
+ES5
+====>
+let name = 'Marceline';
+  
+let player = {
+    name: name,             // nazov vlastnosti a hodnoty sa zbytocne opakuje
+    getName: function() {   // slovo function sa da vynechat
+        return this.name;
+    }
+};
+
+ES6
+====>
+let name = 'Marceline';
+  
+let player = {
+    name,
+    getName() {
+        return this.name;
+    }
+};
+
+--------------------------------------------------------------------------------------
+
+Objekt
+
+let hornyBoy = {
+    name: 'Taako',
+    race: 'Elf',
+    weapon: 'Umbra Staff',
+    level: 12
+}
+
+ES5 - pristup k objektu
+====>
+
+let level = hornyboy.level,
+    name = hornyBoy.name,
+    race = honryBoy.race;
+  
+ES6 - Object Destructioring
+====>	
+let { level, name, race } = hornyBoy;
+
+--------------------------------------------------------------------------------------
+
+fetch:
+// premenna do ktorej s aulozia data 
+let data;
+// fetchne veci z itunes
+fetch('https://itunes.apple.com/search?term=kolowrat')
+    .then(res => res.json())
+    .then((out) => data = out);
+
+// funkcia na vytiahnutie nazvu a interpreta	
+function getSongName( {artistName, trackName} ){
+		console.log(arttistName + '-' + trackName)
+}
+// vypise vsetky pesničky interpret + nazov pesničky
+data.results.forEach(song => getSongName(song))	
+
+ES6 
+====>
+// druha mznost cez getsting - premenne sa mozu premenovat
+function getSong( {artistName:artist, trackName:song, collectionName: album} ){
+		console.log(
+			`${artist} - ${song} ( ${album} )`
+		);
+}
+
+data.results.forEach(song => getSong(song));
+
+https://maximdenisov.gitbooks.io/you-don-t-know-js/content/es6_&_beyond/syntax.html#destructuring

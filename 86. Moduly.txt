@@ -1,0 +1,50 @@
+86 ES6 Modules 01, rozbi kód na súbory
+
+
+JavaScript začal ako kontrola, či si vyplnil všetky políčka vo formulári. Nikto nepredpokladal, že sa s ním raz budú programovať aplikácie. Ale to dnes robíme. Programujeme veľké aplikácie. Čo znamená veľa kódu. Ten potrebujeme upratať, aby sme tú pištoľ mohli nechať v šuflíku a uvidieť, čo prinesie ďalší deň.
+
+
+
+Chceme:
+
+jednak rozdeliť kód do súborov a adresárov
+premenné/funkcie oddeliť od globálu (aby každý súbor mal vlastný scope)
+ideálne do html kódu vkladať len jeden .js súbor
+
+
+Vymysleli sme na to kopu systémov. AMD, UMD, CommonJS... je ich veľa, každý sa používa inak, je v tom bordel.
+
+ES6 ale prinieslo import, export.
+Nech je v tom ne-bordel. 
+Nech je to fajn.
+
+87 ES6 Modules 02, z Patternu na Modul
+
+
+Ukazoval som Module Pattern:
+
+var Bros = (function() {
+  
+    var getAllDudes = function() { ... }
+      
+    return {
+        all: getAllDudes
+    };
+  
+}())
+Malý hack. Trik ako písať kód oddelený od globálneho kontextu. Uväznený vo vlastnej bubline.
+
+
+Po novom nepotrebuješ triky. 
+Stačí ti export a jeho dobrý kamarát import:
+
+import { Bros } from "./bros.module.js";
+
+
+Nezabudni v HTML kóde script tagom pridať type="module"
+
+<script src="./js/app.js" type="module"></script>
+
+
+A nezabudni si pozrieť ďalšie video.
+Kde to všetko vysvetlím porádne.

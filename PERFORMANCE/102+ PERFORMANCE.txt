@@ -1,0 +1,139 @@
+102 Rendering / Painting / Scripting / Reflow / Layout v prehliadači
+
+
+Keď si javascriptom vypýtaš veľkosť alebo pozíciu elementu, prehliadač musí overiť veľkosť a pozíciu všetkých ostatných elementov. Hovoríme tomu layout alebo reflow. Je to relatívne pomalá operácia a vie ti odstaviť stránku, ak to robíš pričasto. 
+
+
+
+Šimaj, toto robí prehliadač, aby mohol stránku nakresliť:
+
+1) NAČÍTA RESOURCE
+čiže stiahne HTML súbor
+
+
+
+2) SPARSUJE HTML KÓD
+prečíta ho a spraví si zoznam HTML objektov
+
+
+
+3) VYROBÍ DOM STROM
+pospája HTML objekty do pavúka elementov (DOM, document object model) eviduje elementy samotné a vzťahy medzi nimi 
+
+počas toho vyrobí CSSOM (css object model)
+
+
+
+4) VYTVORÍ RENDER STROM
+skombinuje DOM a CSSOM a zistí, ktoré elementy musí vykresliť na stránku (meta tagy, hidden inputy, skryté elementy kresliť netreba)
+
+
+
+5) LAYOUT RENDER STROMU
+občas nazývaný flow
+render tree vie ktoré elementy budú na stránke, ale nevie nič o ich finálnej veľkosti a pozícii 
+
+to vypočíta tu
+a trvá to čas, takže my si musíme dávať pozor, aby náš kód nespôsoboval zbytočný layout
+
+
+
+6) PAINT
+konečne má elementy, vie aké sú veľké a kde majú byť - naleje do nich pixely a vyfarbí ich
+
+
+
+V performance tab grafoch v DevTools je paint zelená farba.
+Layout/reflow je fialová.
+Oranžová je scripting, čiže spúšťanie JS kódu. 
+
+Chceme ich čo najmenej. 
+
+
+
+čítaj viac viac viac
+:: https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
+:: https://aerotwist.com/blog/the-anatomy-of-a-frame/
+:: https://developers.google.com/web/fundamentals/performance/rendering
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+103 Ako nájsť BOTTLENECK v kóde cez Performance Tools
+
+
+google jank
+:: https://googlechrome.github.io/devtools-samples/jank
+
+
+
+Bottleneck je kus kódu, ktorý škrtí výkon tvojej aplikácie. DevTools majú Performance nástroje, ktoré ti ho pomôžu nájsť. Aby si ho opravil, to je už na tebe;)
+
+V tomto prípade problém je, že zbytočne spôsobujeme layout. Čiže nútime prehliadač zbytočne počítať rozmery a pozície všetkých elementov. Existujú CSS atribúty, ktoré môžeš meniť bez zbytočných layoutov. 
+
+
+
+high performance animations
+:: https://www.html5rocks.com/en/tutorials/speed/high-performance-animations
+-----------------------------------------------------------------------------------------------------------------------------------
+105 Svižné animácie 02 / žiadny PAINT cez TRANSFORM
+
+
+čo môžeš animovať rýchlo
+https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-proper...
+
+transform a jeho origin
+https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
+
+
+
+Pointa: opacity a transform je čo chceme.
+Toho sa môžeme chytať. 
+Celé to ohmatať. 
+
+-----------------------------------------------------------------------------------------------------------------------------------
+106 Svižné animácie 03 / oklam oko cez EASING
+
+
+easings
+:: https://easings.net
+
+paint paint paint
+:: https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference#paint-flashin...
+:: https://developers.google.com/web/fundamentals/performance/rendering/simplify-paint-complexity-and-r...
+
+scroll performance
+:: https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference#scrolling-per...
+
+rendering perf
+:: https://developers.google.com/web/fundamentals/performance/rendering
+
+kôň a plynulosť
+:: https://www.youtube.com/watch?v=QipC4BAc3A0
+:: https://www.youtube.com/watch?time_continue=11&v=-62uPWUxgcg
+
+--------------------------------------------------------------------------------------------------------------------
+109 Čo môžeš a NESMIEŠ meniť, ak chceš rýchle animácie
+
+
+high perf anim, toto meň
+:: https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-proper...
+:: https://www.html5rocks.com/en/tutorials/speed/high-performance-animations
+
+
+
+css triggers
+:: https://csstriggers.com
+
+110. WILL CHANGE ------------------------------------------------------------------------------------------------------------------
+// povies prehliadacu co sa bude o chvilu menit, 
+// predpripravi si svetko aby bola animacia plynula
+// prida vsetko potrebne tesne pred animaciuou a vypne hned v momente skoncenia
+// aby sa predpripravilo svetko najlepsie dat will-change na akciu :hover, ktora znamena ze sa uz priblizujeme a idmee kliknut 
+// will change sa neodporuca pridavat viacero elementom lebo potom ziadny nebude mat prioritu
+Toto bol hack...
+
+transform: translate3d(0, 0, 0);
+...ktorý element poslal grafickej karte.
+
+Dnes máme will-change
+:: https://developer.mozilla.org/en-US/docs/Web/CSS/will-change

@@ -1,0 +1,11 @@
+{
+	"libs": [
+		"browser"
+	],
+	"loadEagerly": [
+	  "js/lodash.min.js"
+	],
+	"plugins": {
+		"es_modules": {}
+	}
+}

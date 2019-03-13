@@ -1,0 +1,64 @@
+82 ES6/25 Getters, Setters
+
+
+Než vypíšeš dáta to stránky, musíš ich naformátovať. S tým ti pomôže getter.
+Než uložíš dáta do objektu, potrebuješ ich zvalidovať. S tým ti pomôže setter.
+
+let legend = {
+    first: 'vašo',
+    name: 'patejdl',
+ 
+    // prehodime ich na prve velke pismeno
+    get firstName() {
+        return this.first.charAt(0).toUpperCase() + this.first.slice(1);
+    },
+    get lastName() {
+        return this.last.charAt(0).toUpperCase() + this.last.slice(1);
+    },
+  
+    // spojime meno priezvisko dokopy
+    get fullName() {
+        return this.firstName + ' ' + this.lastName;
+    }
+}
+
+
+Getters/setters sú metódy, ale pristupuješ k nim, ako by to boli obyčajné vlastnosti.
+Aj keď secretly sa zavolá metóda, nindža jedna:
+
+legend.first; //vaso
+legend.firstName; Vaso s velkym S
+legend.lastName; // patejdl
+legend.fullName; // Vašo Patejdl
+
+
+Setter ti pomôže s validáciou hodnôt:
+
+let legend = {
+// vlastnosti ktore su privatne, zacinaju s podtrzniukom
+    _first: 'vašo',
+    _last: 'patejdl',
+    _oldness: 31,
+  
+    get age() {
+        return this._oldness;
+    },
+  
+    // validation
+    set age( val ) {
+        if ( ! Number.isInteger(val) ) {
+            return console.error(`that's not a number, dumbass`)
+        }
+            
+        this._oldness = val;
+    }
+}
+
+
+Teraz do _oldness môžeš uložiť iba celé číslo:
+
+legend.age = 69; // ok, nice
+legend.age = 'balls'; // ERROR, BRO
+
+
+A tak.

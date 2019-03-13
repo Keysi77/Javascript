@@ -1,0 +1,75 @@
+118 Web Workers 01
+
+
+json kamarát
+:: https://jsonplaceholder.typicode.com/
+
+axios (ajax kamarát)
+:: https://github.com/axios/axios
+
+
+
+Chcem zo servera načítať dáta. Plné textu. Ten text rozbijem na slová. Tie slová chcem usporiadať, prefiltrovať, navyrábať z nich HTML li element a natrepať ich do zoznamu.
+
+Toto tu spravím.
+A v ďalšom videu to spraví Web Worker na vlastnom vlákne na pozadí.
+A bude to fajn. 
+
+Worker sluzi na multi threading, dva subory budu bezat naraz
+-------------------------------------------------------------------------------------------------------------
+119 Web Workers 02, sieťový roboš
+
+
+Roboš robí. Na pozadí. Nepotrebuje slávu.
+Ale pár vecí nevie robiť:
+
+chytať sa document.objectu
+chytať sa window.objectu
+manipulovať s DOMom
+
+
+A keď sa s ním chceš hrať, musí ti bežať server.
+MAMP/Wamp/localhost, volačo. 
+Nestačí priamo HTML súbor otvoriť v prehliadači.
+
+Teda aspoň myslím.
+Úprimne som to bez servera nikdy neskúšal pustiť. 
+Môžeš byť prvý;)
+
+
+
+web workers
+:: https://developers.google.com/web/fundamentals/performance/rendering/optimize-javascript-execution#r...
+:: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+:: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API
+:: http://blog.teamtreehouse.com/using-web-workers-to-speed-up-your-javascript-applications
+:: https://www.html5rocks.com/en/tutorials/workers/basics/
+
+
+
+veselé WEB WORKERS príklady
+:: http://mdn.github.io/simple-web-worker/
+:: https://github.com/greenido/Web-Workers-Examples
+
+-------------------------------------------------------------------------------------------------------------
+120 Micro Tasks (rozbi masívny náklad na kúsky)
+
+
+Tie videá o DOM performance.
+Kde som pridával tisíce elementov v cykle.
+Videl si, že na sekundy to odstavilo prehliadač.
+
+Keď máš takto masívny task, môžeš ho rozbiť na tisíce maličkých.
+rAF/setTimeout/setInterval sú tvoji parťáci. 
+
+
+
+google max 3ms príklad
+:: https://developers.google.com/web/fundamentals/performance/rendering/optimize-javascript-execution#r...
+
+timeout variant*
+:: https://javascript.info/settimeout-setinterval#allowing-the-browser-to-render
+
+
+
+*môj spolužiak zo strednej hral na bicie v metalovej kapele Variant C, čo je vec, ktorú teraz vieš (užívaj si knolidž)

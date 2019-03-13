@@ -1,0 +1,56 @@
+if(condition){
+  // tento blok vznikol implicitne
+  // co je v nom bude existovať len v nom
+}
+
+alebo explicitne, kydnuť ho hoc kde a oddeliť čo je v nom od globalneho priestoru
+
+{
+  // premenne ktore budu existovat len v tomto bloku
+  
+  let premenna = 50;  // pomocou let povieeme aby existovala len tu
+  var premenna2 = 'asdsdf'; // bude existovať aj mimo tento blok
+}
+
+pr:
+
+function doStuff(bool) {
+	if(bool){
+		var thing = 'blaaa'; 
+		// ak bude var, rpemenna existuje aj v bloku esle (undefined)
+		let thing = 'blaaa';
+		//ak bude let, premenna existuje len v bloku if (v else hodi chybu - tak aako by som to ocakaval)
+		console.log(thing);
+	}
+	else{
+		console.log(thing); // Hoisting precita do pamete premenne, len var thing nebude ešte naplnena, let thing tu nebude existovat a hodi chybu
+	}
+}
+// V cykloch pouzivat let, aby iterator existoval len v cykle
+// let vytvori nove i, pre kazdu jednu iteraciu
+for (let i=0; i<10; i++){
+	console.log(i);
+}
+
+console.log(i);  // toto uz nebude fungovat, lebo nebude poznat i
+
+// keby bolo var tak nefunguje lebo javasctipt je asynchronny
+// nestpusta kod riadok po riadku ale len ten ktory sama spustit za urcitych pdmienok
+// ak je kod naviazany na kliknutie mysou a nikto neklikne, tak sa nespusti
+
+
+// OOP v Javascripte
+
+{
+	const name = 'My Library';
+	const version = 0.1;
+	let fun = function(){};
+	
+	window.metoda={
+		name: name,
+		version: version,
+		fun: fun
+	}
+}
+
+// mimo tento blok nebude existovat premenna version, name, fun ale metoda.version, metoda.name, metoda.fun

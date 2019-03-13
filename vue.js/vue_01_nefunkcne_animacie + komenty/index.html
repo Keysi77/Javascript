@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- Script tag pre Vue -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+
+	<title>Vue me</title>
+</head>
+
+<body>
+	<div id="app">
+		<!-- Na miesto <ul> sa pouzije transition group element pre animovanie celej skupiny elementov -->
+			<transition-group name="character" tag="ul">
+			<!-- 
+			v-for je for each cyklus v Vue
+			:class dynamicka trieda ktora sa prida za predpokladu splnenia podmienky
+			prida triedu strong ak sa splni podmienka 
+			-->
+		
+			<!-- nebude fungovat lebo uz je definovane pole objektov
+				<li :class="{ strong: character.split(' ').length > 3 }"
+				v-for="character in characters">
+				{{ character }}
+
+		
+				<small v-if="character.split(' ').length < 3">
+					<em>- shor name</em>
+				</small>
+			</li> -->
+		    <!-- index je zaznam, cislo cez kolku polozku zaznamu prechadzam -->
+			
+			<li class="dude" v-for="(character, index) in characters" :key="index" >
+				<!-- 
+				po kliknuti sa zamedzi default akcia ale spusti sa metoda 
+				remove(dude), ktora odstrani character cez ktory prave prechadzam
+				-->
+				<a class="ctrl" @click.prevent="remove(character)">x</a> 
+				<!-- ak je character.cool < 10 prida classu faded, ak je vacsie ako 50 prida classu gold -->
+				<article :class="{ faded: character.cool < 10, gold: character.cool > 50 }">
+					{{character.who}}
+					<span>{{character.wat}}</span>
+				</article>
+				<input type="number" class="ctrl" v-model.number="character.cool">
+			</li>
+		</transition-group>
+		<!-- cez @ vieme spravit podmienku na kluknutie, submitnutie a pod...	 -->
+		<button @click="counter++" type="button" class="btn btn-success">Click me</button>
+		<p>
+			{{ counter }}
+		</p>
+
+		<!-- skratka : form.add-new 
+			ak submitnem, spusti sa metoda add	a prevent zabrani 
+			klasickemu odosslaniu formularu (zabrani default hodnote)
+			@keydown.enter - ked stlacim ENTER, spusti sa metoda add
+		-->
+		<form class="add-new" @keydown.enter="add">
+			<!-- naviazem na newDude, bude sa reaktivne pisat to co je v newDude -->
+			<input type="text" v-model="newWho" ref="new" autofocus> 
+			<input type="text" v-model="newWat"> 
+			
+		</form>
+		<p class="preview">
+			{{ newWho }}
+			<small>{{newWat}}</small>
+		</p>
+	</div>
+
+
+	<script>
+		// aby Vue zilo na elemente s idckom #app
+	const app = new Vue({
+		// obalovac ktorym povieme kde sa bude vue pouzivat
+		el: '#app',
+		//data
+		data: {
+			counter: 0,
+			newWho: "",
+			newWat: "",
+			// pole objektov
+			characters: [],
+			/*characters: [{
+				"who": 'Finn the Human',
+				"wat": 'Fin wat wat wat wat wat',
+				"cool": 12,
+			}, {
+				"who": 'Jake the dog',
+				"wat": 'Jake  wat wat wat wat wat',
+				"cool": 8,
+			}],*/
+		},
+		// metody
+		methods: {
+			add(){
+				// ked kliknem enter pushne sa dana hodnota z inputu
+				if(!this.newWho || !this.newWat) return // ak nic nepridam nespravi sa nic
+				this.characters.push({
+					who: this.newWho,
+					wat: this.newWat,
+					cool: 15
+				})
+				// ked pridam aby sa premazali elementy v inputoch
+				this.newWho=""
+				this.newWat=""
+				// aby sa dal vzdy autofocus do ref ktora ma nazov "new" (do prveho inputu)
+				this.$refs.new.focus()
+
+			},
+			remove(character){
+				// vyfiltruje vsetky ktore niesu aktualny dude, tak sa vytvori mazanie
+				this.characters = this.characters.filter(item => item !== character)
+				
+			}
+		},
+		// spusti sa tento kod po tom, co sa vytvori instancia data a methods
+		created(){
+			// simulcia prichodu dat z ineho serveru
+			fetch('https://api.myjson.com/bins/ysi5m')
+				.then(res => res.json()) // vzrobi json
+				// data sa rovnaju jsonu ktory pride z externeho serveru
+				// po nacitani stranky sa zobrazia tie data, ktore su v tomto jsone
+				.then(json => this.characters = json)
+
+		}
+
+	})
+	</script>
+
+</body>
+</html>
